@@ -14,7 +14,7 @@ def is_ric_in_database(ric, conn):
 # Refinitiv API key
 ek.set_app_key('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
 
-# connect to database
+# SQLite database connection
 conn = sqlite3.connect('pead_database.sqlite')
 
 # extract distinct RICs
