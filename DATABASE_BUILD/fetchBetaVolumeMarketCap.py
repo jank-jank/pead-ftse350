@@ -18,7 +18,6 @@ ek.set_app_key('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
 start_date = '2013-01-01'
 end_date = '2022-12-31'
 
-# SQLite database connection
 conn = sqlite3.connect('pead_database.sqlite')
 
 # fetch RICs from database
@@ -43,7 +42,7 @@ for ric in ric_list:
                 ]
             )
             
-            # rename the columns
+            # rename columns
             data.columns = ['RIC', 'Beta', 'Volume', 'MarketCap']
             
             # generate the date range and assign it to data DataFrame
@@ -54,7 +53,7 @@ for ric in ric_list:
             merged_data = base_df.merge(data, on='Date', how='left')
             merged_data['RIC'] = ric
             
-            # save the merged data for the current RIC to the RICData table in the database
+            # save merged data for the current RIC to the RICData table
             merged_data.to_sql('RICData', conn, if_exists='append', index=False)
             
             print(f"Data for {ric} saved successfully.")

@@ -14,7 +14,6 @@ def is_ric_in_earnings_ref(ric, conn):
 # Refinitiv API key
 ek.set_app_key('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
 
-# SQLite database connection
 conn = sqlite3.connect('pead_database.sqlite')
 
 # fetch distinct RICs

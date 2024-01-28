@@ -2,6 +2,12 @@ import pandas as pd
 import sqlite3
 import eikon as ek
 
+# mnemonics of the data needed (see HSUP in Refinitiv)
+# SUE --> TR.RevenueActSueScore
+# Actual EPS --> TR.EPSActValue
+# Forecasted EPS --> TR.EPSMean
+# %Surprise --> TR.EPSActSurprise
+
 def is_ric_in_database(ric, conn):
     """Check if a given RIC is already in the database."""
     cursor = conn.cursor()
@@ -14,7 +20,6 @@ def is_ric_in_database(ric, conn):
 # Refinitiv API key
 ek.set_app_key('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
 
-# SQLite database connection
 conn = sqlite3.connect('pead_database.sqlite')
 
 # extract distinct RICs
